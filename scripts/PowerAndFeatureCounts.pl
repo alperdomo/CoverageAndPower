@@ -1,8 +1,5 @@
 #usr/bin/perl
 
-#
-## Running in screen:
-## perl PowerAndFeatureCounts.pl PlottingPowerSim.R CountsFeaturesTYPE.R v3.1_mapped_annotationsFilterByHetSnps.gtf dataType=rna AnnoType=GTF
 use strict;
 use warnings"all";
 use DirHandle;
