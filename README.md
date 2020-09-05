@@ -1,8 +1,7 @@
-## Step 1. Run CoveragePerSnpParallel.pl (do a less -S to the script to find more information on how to proceed with it).
-## Step 2. Run the PowerAndFeatureCounts.pl script (do a less -S to the script to find more information on how to proceed with it).
 
+# Calculate coverage per SNP, plot power to detect allelic imbalance, and count SNPs heterozygous SNPs within genomic elements
 
-</font> scripts to calculate CoveragePerSNP in single cell RNA and ATAC seq data </font>
+Scripts to calculate the coverage per SNP in bam files. This repository was initially thought to explore single cell RNA and ATAC seq data
 
 This repository contains:
 
@@ -18,10 +17,8 @@ heterozygous state (hetSNPs) that are locatedin specific genomic elements
 • Script to split bam files.
 
 • yml files to recreate the conda environmnet.
-
-
-
 """
+
 The main aim of the code in this repository is allow the users to address the following questions:
 - How much coverage our sequencing experiment has to have to be able to detect allelic inbalance with
 effect values of 0.63,0.68,0.74,0.79,0.84? These values can be adjusted by the user. Of use to explore  
@@ -50,3 +47,10 @@ This is of use running it in parallel.
   Example:  perl CoveragePerSnpParallel.pl filteringIDsBam.pl REF VCFpos 20 20 600
 Note: The CoveragePerSnpParallel.pl script will read within the folder and search for all files bam files (*.bam)    
 ![](images/FertilityVsLifeExpectancy.gif)
+
+
+
+
+
+## Step 1. Run CoveragePerSnpParallel.pl (do a less -S to the script to find more information on how to proceed with it).
+## Step 2. Run the PowerAndFeatureCounts.pl script (do a less -S to the script to find more information on how to proceed with it).
