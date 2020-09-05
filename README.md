@@ -7,18 +7,18 @@ This repository contains:
 
 """
 
-  • Script to calculate the coverage per SNP using samtools and bam-readcounts .
+    • Script to calculate the coverage per SNP using samtools and bam-readcounts .
 
-  • Script for calculating the power to detect allelic imbalance.
+    • Script for calculating the power to detect allelic imbalance.
 
-  • Script to count and plot the counts per features for SNPs found in
-  heterozygous state (hetSNPs) that are locatedin specific genomic elements
-  (e.g. Genes, Peaks, other genome coordinate)
+    • Script to count and plot the counts per features for SNPs found in
+    heterozygous state (hetSNPs) that are locatedin specific genomic elements
+    (e.g. Genes, Peaks, other genome coordinate)
 
-  • Script to split bam files.
+    • Script to split bam files.
 
-  • yml files to recreate the conda environmnet.
-  
+    • yml files to recreate the conda environmnet.
+    
 """
 
 The main aim of the code in this repository is allow the users to address the following questions:
