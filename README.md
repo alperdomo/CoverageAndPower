@@ -1,5 +1,5 @@
 
-# Calculate coverage per SNP, plot power to detect allelic imbalance, and count SNPs heterozygous SNPs within genomic elements
+### Calculate coverage per SNP, plot power to detect allelic imbalance, and count SNPs heterozygous SNPs within genomic elements
 
 Scripts to calculate the coverage per SNP in bam files. This repository was initially thought to explore single cell RNA and ATAC seq data
 
