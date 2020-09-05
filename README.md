@@ -5,8 +5,6 @@ Scripts to calculate the coverage per SNP in bam files. This repository was init
 
 This repository contains:
 
-"""
-
     • Script to calculate the coverage per SNP using samtools and bam-readcounts .
 
     • Script for calculating the power to detect allelic imbalance.
@@ -18,8 +16,7 @@ This repository contains:
     • Script to split bam files.
 
     • yml files to recreate the conda environmnet.
-    
-"""
+
 
 The main aim of the code in this repository is allow the users to address the following questions:
 - How much coverage our sequencing experiment has to have to be able to detect allelic inbalance with
