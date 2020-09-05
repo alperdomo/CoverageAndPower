@@ -1,22 +1,24 @@
 
-### Calculate coverage per SNP, plot power to detect allelic imbalance, and count SNPs heterozygous SNPs within genomic elements
+### Calculate coverage per SNP, plot power to detect allelic imbalance, and count heterozygous SNPs within genomic elements
 
 Scripts to calculate the coverage per SNP in bam files. This repository was initially thought to explore single cell RNA and ATAC seq data
 
 This repository contains:
 
 """
-• Script to calculate the coverage per SNP using samtools and bam-readcounts .
 
-• Script for calculating the power to detect allelic imbalance.
+  • Script to calculate the coverage per SNP using samtools and bam-readcounts .
 
-• Script to count and plot the counts per features for SNPs found in
-heterozygous state (hetSNPs) that are locatedin specific genomic elements
-(e.g. Genes, Peaks, other genome coordinate)
+  • Script for calculating the power to detect allelic imbalance.
 
-• Script to split bam files.
+  • Script to count and plot the counts per features for SNPs found in
+  heterozygous state (hetSNPs) that are locatedin specific genomic elements
+  (e.g. Genes, Peaks, other genome coordinate)
 
-• yml files to recreate the conda environmnet.
+  • Script to split bam files.
+
+  • yml files to recreate the conda environmnet.
+  
 """
 
 The main aim of the code in this repository is allow the users to address the following questions:
