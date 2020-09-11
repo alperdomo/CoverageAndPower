@@ -98,14 +98,16 @@ To run this step, use the following information as input:
 ### Count for features in hestSNPs with coverage higher than X
 In the case that the user want to calculate the counts for features where the hetSNPs have a coverage higher than X, and that are located in genes or peaks, the *cov files can be filtered using the three steps described below.
 
-`#### Notes:
+`
+#### Notes:
 Replace the number 20 in all lines to set the desired depth of coverage to filter hetSNP, and generate the customized GTF and SAF.
 
 There must be a GTF file within the folder that contains the *.cov files
 
 If you are going to run using only SAF files generated from a GTF (genes), use the the last line of the point 3 (#) and skip the line 4.  
 
-If you are going to run using only a SAF file generated from a GTF (peaks), use the first two lines of the point 3.`
+If you are going to run using only a SAF file generated from a GTF (peaks), use the first two lines of the point 3.
+`
 
 
 1. source activate CovSnp
