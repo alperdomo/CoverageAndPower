@@ -4,39 +4,40 @@
 ![](images/PowerAndFeatureCounts_peaks_hetSNPs.png)
 
 
-Scripts to calculate the coverage per SNP in bam files. This repository was initially thought to explore single cell RNA and ATAC seq data
+Scripts to calculate the coverage per SNP in bam files. This repository was initially thought to explore single cell RNA and ATAC seq data.
+It is a complement to the SplitBam repository, which is of use for splitting a bam file from single cell data based on clusters of cells.
 
-This repository contains:
+ CoveragePerSNP contains:
 
     • Script to calculate the coverage per SNP using samtools and bam-readcounts .
 
     • Script for calculating the power to detect allelic imbalance.
 
-    • Script to count and plot the counts per features for SNPs found in
-    heterozygous state (hetSNPs) that are locatedin specific genomic elements
-    (e.g. Genes, Peaks, other genome coordinate)
+    • Script to count and plot the counts per features per SNPs found in
+    heterozygous state (hetSNPs) that are located in specific genomic elements
+    (e.g. Genes, Peaks, other genome coordinates)
 
-    • Script to split bam files.
+    • Script to split bam files by chunks.
 
-    • yml files to recreate the conda environmnet.
+    • yml file to recreate the CovSnp conda environmnet.
 
 
-The main usage of the code in this repository is to allow the users explore:
+This code allows the users to explore:
 - How much coverage our sequencing experiment has to have to be able to detect allelic imbalance with
-default effect values of 0.63,0.68,0.74,0.79,0.84? Effect values can be defined.
+default effect values of 0.63,0.68,0.74,0.79,0.84? Effect values can be user adjusted.
 
 - How many hetSNPs, using user defined depth and base quality, are located within genes, peaks, or other genome coordinates?
-Additional parameters could be set by following bam-readcount manual.
+Additional parameters could be set by following bam-readcount manual available here: https://github.com/genome/bam-readcount.
 
-#### Notes:
-The code in this repository was implemented using high performance computing (HPC) facilities. Therefore, it includes
-submission scripts to the queue system from a HPC.
+`#### Notes:
+The code  was implemented to be used in high performance computing (HPC) facilities with queuing systems; therefore, it includes
+submission scripts to the HPC.
 
 The CoveragePerSnpParallel.pl script will read within the folder and search for all files bam files (*.bam)
 
-It will split the bam file    
-
 Check the line "use Proc::Queue size=>31, qw(run_back);" to define the number of cores to be used.
+
+It will split the bam file based on a particular length. The user can modify this length by changing the size in the script splitbamByshuncks.`     
 
 
 ### Step I. Calculate the coverage per SNP (runs in parallel).
@@ -81,8 +82,8 @@ To run this step you require the following information:
   - Fractional counts is active (-f)
   - Ignore duplicates is active (--ignoreDup)
 
-#### Note:
-Using a SAF file for exons will require to run it only with the annotation for exons
+`#### Note:
+Using a SAF file for exons will require to run it only with the annotation for exons`
 
 To run this step, use the following information as input:
   - Script `PowerAndFeatureCounts.pl`
@@ -97,14 +98,14 @@ To run this step, use the following information as input:
 ### Count for features in hestSNPs with coverage higher than X
 In the case that the user want to calculate the counts for features where the hetSNPs have a coverage higher than X, and that are located in genes or peaks, the *cov files can be filtered using the three steps described below.
 
-#### Notes:
+`#### Notes:
 Replace the number 20 in all lines to set the desired depth of coverage to filter hetSNP, and generate the customized GTF and SAF.
 
 There must be a GTF file within the folder that contains the *.cov files
 
 If you are going to run using only SAF files generated from a GTF (genes), use the the last line of the point 3 (#) and skip the line 4.  
 
-If you are going to run using only a SAF file generated from a GTF (peaks), use the first two lines of the point 3.
+If you are going to run using only a SAF file generated from a GTF (peaks), use the first two lines of the point 3.`
 
 
 1. source activate CovSnp
