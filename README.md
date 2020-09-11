@@ -29,7 +29,7 @@ default effect values of 0.63,0.68,0.74,0.79,0.84? Effect values can be user adj
 - How many hetSNPs, using user defined depth and base quality, are located within genes, peaks, or other genome coordinates?
 Additional parameters could be set by following bam-readcount manual available here: https://github.com/genome/bam-readcount.
 
-`#### Notes:
+#### Notes:
 The code  was implemented to be used in high performance computing (HPC) facilities with queuing systems; therefore, it includes
 submission scripts to the HPC.
 
@@ -37,7 +37,7 @@ The CoveragePerSnpParallel.pl script will read within the folder and search for 
 
 Check the line "use Proc::Queue size=>31, qw(run_back);" to define the number of cores to be used.
 
-It will split the bam file based on a particular length. The user can modify this length by changing the size in the script splitbamByshuncks.`     
+It will split the bam file based on a particular length. The user can modify this length by changing the size in the script splitbamByshuncks.     
 
 
 ### Step I. Calculate the coverage per SNP (runs in parallel).
@@ -47,7 +47,7 @@ It will split the bam file based on a particular length. The user can modify thi
 2. Install the Proc::Queue perl module within the CovSnp environment using `cpanm Proc::Queue`.
 This is of use running it in parallel.
 
-3. use the following information as input
+3. Use the following information as input
   - filtering script
   - path to reference genome *.fa, *.fasta
   - file from vcf containing the chr, pos1 pos1
@@ -58,13 +58,13 @@ This is of use running it in parallel.
 
 
 ### Step II. Calculate the power and feature counts
-In this step the statistical power for detecting allele specific expression (AES) is performed.
+In this step the statistical power for detecting allele imbalance is performed.
 
 The script will read all *.cov.bed files, which are generated in the previous step, and calculate the power using as effect's values: 0.63,0.68,0.74,0.79,0.84. This values can be changed by within the script PowerAndFeatureCounts.pl.
 
-A graphical representation of the statistical power per each sample will be created.
+Plot the statistical power per each sample will be created.
 
-In this step, the counts per features for SNPs that are found in heterozygous state (hetSNPs) within specific genome elements (Genes or Peaks) will be calculated. For genes it will produce two feature files (txt) containing the information for exons and for genes.
+Counts the hextSNPs within specific genome elements (Genes or Peaks) will be calculated. For genes it will produce two feature files (txt) containing the information for exons and for genes. It will also plot the amount of HetSNPs per feature at different ranges of coverage.
 
 To run this step you require the following information:
   - Power calculation script  (`PlottingPowerSim.R`)
@@ -82,8 +82,8 @@ To run this step you require the following information:
   - Fractional counts is active (-f)
   - Ignore duplicates is active (--ignoreDup)
 
-`#### Note:
-Using a SAF file for exons will require to run it only with the annotation for exons`
+#### Note:
+Using a SAF file for exons will require to run it only with the annotation for exons
 
 To run this step, use the following information as input:
   - Script `PowerAndFeatureCounts.pl`
@@ -96,9 +96,8 @@ To run this step, use the following information as input:
 
 
 ### Count for features in hestSNPs with coverage higher than X
-In the case that the user want to calculate the counts for features where the hetSNPs have a coverage higher than X, and that are located in genes or peaks, the *cov files can be filtered using the three steps described below.
+In the case that users want to calculate the counts for features where the hetSNPs have a coverage higher than X, and that are located in genes or peaks, the *cov files can be filtered using the three steps described below.
 
-`
 #### Notes:
 Replace the number 20 in all lines to set the desired depth of coverage to filter hetSNP, and generate the customized GTF and SAF.
 
@@ -107,7 +106,6 @@ There must be a GTF file within the folder that contains the *.cov files
 If you are going to run using only SAF files generated from a GTF (genes), use the the last line of the point 3 (#) and skip the line 4.  
 
 If you are going to run using only a SAF file generated from a GTF (peaks), use the first two lines of the point 3.
-`
 
 
 1. source activate CovSnp
