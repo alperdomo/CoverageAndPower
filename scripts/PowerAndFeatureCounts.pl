@@ -34,7 +34,7 @@ sub run_code {
 		my $newdir = $tempfiles.'.dir';
 		print("$newdir\n");
 		chdir $newdir;
-		system ("R '--vanilla' '--args' ../$tempfiles $tempfiles.'pdf' \< $powerCalc ");
+		system ("R '--vanilla' '--args' ../$tempfiles $tempfiles.'power.pdf' \< ../$powerCalc ");
 }
 
 my @array2 = <*.bam>;
@@ -43,19 +43,19 @@ sub run_code2 {
 	my $tempfiles2=shift;
 	if ($dataType eq "rna") {
 		if ($annotFileType eq  "GTF") {
-		system("featureCounts -T 30 -M -O -Q 20 --ignoreDup -p -f -F GTF -a $annotation -t transcript -g gene_id -o $tempfiles2.'dir.cov.bed.dir/$tempfiles2'.'GTFtranscript.txt' $tempfiles2");
+			system("featureCounts -T 30 -M -O -Q 20 --ignoreDup -p -f -F GTF -a $annotation -t transcript -g gene_id -o $tempfiles2.'dir.cov.bed.dir/$tempfiles2'.'GTFtranscript.txt' $tempfiles2");
 	    system("featureCounts -T 30 -M -O -Q 20 --ignoreDup -p -f -F GTF -a $annotation -t exon -g gene_id -o $tempfiles2.'dir.cov.bed.dir/$tempfiles2'.'GTFexon.txt' $tempfiles2");
 	    system("R --vanilla --args $tempfiles2.'dir.cov.bed.dir/$tempfiles2'.'GTFtranscript.txt' $tempfiles2.'dir.cov.bed.dir/$tempfiles2'.'GTFexon.txt' $tempfiles2.'dir.cov.bed.dir/$tempfiles2'.'GTFtransAndExons.pdf' \< $countFeatures");
 
 	    }
 	    if ($annotFileType eq  "SAF") {
-		system("featureCounts -T 30 -M -O -Q 20 --ignoreDup -p -f -F SAF -a $annotation -t transcript -g gene_id -o $tempfiles2.'dir.cov.bed.dir/$tempfiles2'.'SAF.txt' $tempfiles2");
-	    system("R --vanilla --args $tempfiles2.'dir.cov.bed.dir/$tempfiles2'.'SAF.txt' $tempfiles2.'dir.cov.bed.dir/$tempfiles2'.'SAF.txt' $tempfiles2.'dir.cov.bed.dir/$tempfiles2'.'SAF.pdf' \< $countFeatures");
+				system("featureCounts -T 30 -M -O -Q 20 --ignoreDup -p -f -F SAF -a $annotation -t transcript -g gene_id -o $tempfiles2.'dir.cov.bed.dir/$tempfiles2'.'SAF.txt' $tempfiles2");
+	    	system("R --vanilla --args $tempfiles2.'dir.cov.bed.dir/$tempfiles2'.'SAF.txt' $tempfiles2.'dir.cov.bed.dir/$tempfiles2'.'SAF.pdf' \< $countFeatures");
 	    }
 	}
 	if ($dataType eq "atac") {
 		if ($annotFileType eq  "SAF") {
-		system("featureCounts -T 30 -M -O -Q 20 --ignoreDup -p -f -F SAF -a $annotation -o $tempfiles2.'dir.cov.bed.dir/$tempfiles2'.'peak.txt' $tempfiles2");
+			system("featureCounts -T 30 -M -O -Q 20 --ignoreDup -p -f -F SAF -a $annotation -o $tempfiles2.'dir.cov.bed.dir/$tempfiles2'.'peak.txt' $tempfiles2");
 	    system("R --vanilla --args $tempfiles2.'dir.cov.bed.dir/$tempfiles2'.'peak.txt' $tempfiles2.'dir.cov.bed.dir/$tempfiles2'.'peak.pdf' \< $countFeatures");
 	    }
 	}

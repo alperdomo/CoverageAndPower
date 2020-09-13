@@ -4,8 +4,7 @@
 ![](images/PowerAndFeatureCounts_peaks_hetSNPs.png)
 
 
-Scripts to calculate the coverage per SNP in bam files. This repository was initially thought to explore single cell RNA and ATAC seq data.
-It is a complement to the SplitBam repository, which is of use for splitting a bam file from single cell data based on clusters of cells.
+Scripts to calculate the coverage per SNP in bam files. This repository was initially thought to explore single cell RNA and ATAC seq data, where we wanted to explore the obtained coverge per each cluster of cell. It is a complement to the SplitBam repository, which is of use for splitting a bam file from single cell data based on clusters of cells.
 
  CoveragePerSNP contains:
 
@@ -71,7 +70,7 @@ To run this step you require the following information:
   - *.cov.bed (for all files)
   - R script for plotting features, either for scRNA/scATAC.
   - vcf file, which will be subsequently parsed as chr, pos1 pos1
-  - A GTF or SAF file for counting the coordinates for the features (see data folder for an example)
+  - A GTF or simpler annotation format (SAF) file for counting the the HetSNPs for specific features (see data folder for examples)
     • The SAF annotation file format is: ID 	chr 	start 	end 	strand
     • For peak SAF annotation files set strand to +
   - Quality (Q) is set to 20, change as necessary: line running featureCounts
@@ -83,7 +82,7 @@ To run this step you require the following information:
   - Ignore duplicates is active (--ignoreDup)
 
 #### Note:
-Using a SAF file for exons will require to run it only with the annotation for exons
+Using a SAF file for getting information for exons will require to run it only with an annotation file for such features.
 
 To run this step, use the following information as input:
   - Script `PowerAndFeatureCounts.pl`

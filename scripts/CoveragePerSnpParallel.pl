@@ -5,7 +5,7 @@ use DirHandle;
 use Data::Dumper;
 use Cwd qw(getcwd);
 use File::Temp qw/ tempfile tempdir /;
-use Proc::Queue size=>2, qw(run_back);
+use Proc::Queue size=>31, qw(run_back);
 use File::Copy;
 Proc::Queue::trace(1);
 
