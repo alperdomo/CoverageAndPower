@@ -6,7 +6,6 @@ Arg=commandArgs()
 Sample <- Arg[4]
 outfile <- Arg[5]
 counts <- read.table(Sample, sep="\t", header=FALSE, stringsAsFactors=FALSE)
-
 counts <- counts[counts$V7>0,]
 dims <- dim(counts)
 dims <- dims[1]
