@@ -33,18 +33,16 @@ BASEQC=$5
 MAXCOUNT=$6
 
 
-source activate splitBam
+source activate CovSnp
 
 perl $SCRIPT1 $REFERENCE $VCFPOSBED $MAPQC $BASEQC $MAXCOUNT
 
 conda deactivate 
 
-##---------------------------------------------------------- Notes: -----------------------------------------------------------------------------------------##
-# Before to run the split process, create and activate the environtment, and install the option to run in parallel using "cpanm Proc::Queue" in the terminal  #                
-# SCRIPT1= path to parsing script (split_bam_sciATAC.pl)                                                                                                      #                                                               
-# REFERENCE= fastafile                                                                                                                                        #
-# VCFPOSBED = Format = chr positionSNP positionSNP                                                                                                            #
-# MAPQC = Minimum mapping quality . Integer                                                                                                                   #	
-# BASEQC = Minimum base quality. Integer                                                                                                                      #
-# MAXCOUNT= Maximun number for coverage. It reduces the amount of memory used                                                                                 #
-##-----------------------------------------------------------------------------------------------------------------------------------------------------------## 
+# Before to run the split process, create and activate the environtment, and install the option to run in parallel using "cpanm Proc::Queue" in the terminal.
+# SCRIPT1= path to parsing script (perl script).                                                                                                                             
+# REFERENCE= fastafile.                                                                                                           
+# VCFPOSBED = Format = chr positionSNP positionSNP.                                                                                                            
+# MAPQC = Minimum mapping quality (Integer).                                                                                                                   	
+# BASEQC = Minimum base quality (Integer).                                                                                 
+# MAXCOUNT= Maximun number for coverage. It reduces the amount of memory used. 

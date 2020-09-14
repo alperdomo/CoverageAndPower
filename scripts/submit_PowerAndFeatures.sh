@@ -33,18 +33,16 @@ ANNOTATION=$4
 DATATYPE=$5
 ANNOTYPE=$6
 
-source activate splitBam
+source activate CovSnp
 
 perl $SCRIPT1 $SCRIPT2 $SCRIPT3 $ANNOTATION $DATATYPE $ANNOTYPE
 
 conda deactivate
 
-##---------------------------------------------------------- Notes: -----------------------------------------------------------------------------------------##
-# Before to run the split process, create and activate the environtment, and install the option to run in parallel using "cpanm Proc::Queue" in the terminal  #
-# SCRIPT1= path to script for power and feature counts calculation (PowerAndFeatureCounts.pl)                                                                 #
-# SCRIPT2= path to script for calculating the statistical power (PlottingPowerSim.R)                                                                          #
-# SCRIPT3= path to script for counting and plotting feature counts (CountsFeatures.R)                                                                         #
-# ANNOTATION= Either a GTF or SAF file. For scATAC: only SAF files can be used                                                                                #
-# DATATYPE=  Indicate if it is either RNA or ATAC data by using: dataType=rna or dataType=atac                                                                #
-# ANNOTYPE= Indicate if the ANNOTATION file is in GTF or SAF format by using: AnnoType=SAF or AnnoType=GTF                                                    #
-##-----------------------------------------------------------------------------------------------------------------------------------------------------------##
+# Before to run the split process, create and activate the environtment, and install the option to run in parallel using "cpanm Proc::Queue" in the terminal.
+# SCRIPT1= path to script for power and feature counts calculation (PowerAndFeatureCounts.pl).
+# SCRIPT2= path to script for calculating the statistical power (PlottingPowerSim.R).
+# SCRIPT3= path to script for counting and plotting feature counts (CountsFeatures.R).
+# ANNOTATION= Either a GTF or SAF file. For scATAC: only SAF files can be used.
+# DATATYPE=  Indicate if it is either RNA or ATAC data by using: dataType=rna or dataType=atac.
+# ANNOTYPE= Indicate if the ANNOTATION file is in GTF or SAF format by using: AnnoType=SAF or AnnoType=GTF
