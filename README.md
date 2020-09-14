@@ -1,18 +1,18 @@
 
-### Calculate the coverage per SNP, power to detect allelic imbalance, and count heterozygous SNPs ()HetSNPs) within coordinate defined genomic regions. 
+### Calculate the power to detect allelic imbalance,  coverage per SNP, and count heterozygous SNPs ()HetSNPs) within coordinate defined genomic regions. 
 
 ![](images/PowerAndFeatureCounts_peaks_hetSNPs.png)
 
 
-Scripts to calculate the coverage per SNP in bam files. This repository was initially thought to explore single cell RNA and ATAC seq data, where we wanted to explore the obtained coverge per each cluster of cell. It is a complement to the SplitBam repository, which is of use for splitting a bam file from single cell data based on clusters of cells.
+Scripts to calculate the power to detect allelic imbalance and the coverage per SNP in bam files. This repository was initially thought to explore single cell RNA and ATAC seq data, where we wanted to explore the obtained coverge per each cluster of cells. It is a complement to the SplitBam repository, which is of use for splitting bam files from single cell data based on cell IDs clustering together.
 
- CoveragePerSNP contains:
+The CoverageAndPower repository contains:
 
     • Script to calculate the coverage per SNP using samtools and bam-readcounts .
 
     • Script for calculating the power to detect allelic imbalance.
 
-    • Script to count and plot the counts per features per SNPs found in
+    • Scripts to count and plot the counts per features per SNPs found in
     heterozygous state (hetSNPs) that are located in specific genomic elements
     (e.g. Genes, Peaks, other genome coordinates)
 
@@ -26,17 +26,18 @@ This code allows the users to explore:
 default effect values of 0.63,0.68,0.74,0.79,0.84? Effect values can be user adjusted.
 
 - How many hetSNPs, using user defined depth and base quality, are located within genes, peaks, or other genome coordinates?
-Additional parameters could be set by following bam-readcount manual available here: https://github.com/genome/bam-readcount.
+Additional parameters could be set by following bam-readcount manual available here: https://github.com/genome/bam-readcount, and the package subread here: http://subread.sourceforge.net/.
 
 #### Notes:
-The code  was implemented to be used in high performance computing (HPC) facilities with queuing systems; therefore, it includes
-submission scripts to the HPC.
+The code  was implemented to be used in high performance computing (HPC) facilities with queuing systems; therefore, it also includes the submission scripts to the HPC.
 
-The CoveragePerSnpParallel.pl script will read within the folder and search for all files bam files (*.bam)
+The CoveragePerSnpParallel.pl script will read within the folder and search for all bam files (unsorted or sorted *.bam)
 
 Check the line "use Proc::Queue size=>31, qw(run_back);" to define the number of cores to be used.
 
-It will split the bam file based on a particular length. The user can modify this length by changing the size in the script splitbamByshuncks.     
+It will split the bam file based on a particular length. The user can modify this length by changing the size in the script splitbamByshuncks.sh.
+
+To run the test files, check the file `running_test.sh` within the scripts folder. 
 
 
 ### Step I. Calculate the coverage per SNP (runs in parallel).
@@ -49,23 +50,23 @@ This is of use running it in parallel.
 3. Use the following information as input
   - filtering script
   - path to reference genome *.fa, *.fasta
-  - file from vcf containing the chr, pos1 pos1
+  - file containing information from the variant call. Example: chr pos1 pos1
   - Minimun mapping quality to filter. Integer (e.g. 20)
   - Minimun  base quality. Integer (e.g. 20)
-  - Maximum counts to be considered  
+  - Maximum counts to be considered
   Example:  `perl CoveragePerSnpParallel.pl reference.fa VCF_positions 20 20 600`
 
 
 ### Step II. Calculate the power and feature counts
-In this step the statistical power for detecting allele imbalance is performed.
+In this step the statistical power for detecting allelic imbalance is performed.
 
-The script will read all *.cov.bed files, which are generated in the previous step, and calculate the power using as effect's values: 0.63,0.68,0.74,0.79,0.84. This values can be changed by within the script PowerAndFeatureCounts.pl.
+- The script will read all *.cov.bed files, which are generated in the previous step, and calculate the power using as effect's values: 0.63,0.68,0.74,0.79,0.84. This values can be changed by within the script PowerAndFeatureCounts.pl.
 
-Plot the statistical power per each sample will be created.
+- Plot the statistical power per each sample will be created.
 
-Counts the hextSNPs within specific genome elements (Genes or Peaks) will be calculated. For genes it will produce two feature files (txt) containing the information for exons and for genes. It will also plot the amount of HetSNPs per feature at different ranges of coverage.
+- Count the hetSNPs within specific genome elements (coordinates for Genes or Peaks). For genes it will produce two feature's files (txt) containing the information for exons and for genes. It will also plot the amount of HetSNPs per feature at different ranges of coverage. These ranges can also be updated by modifying values within the R scripts. 
 
-To run this step you require the following information:
+To run this step the user will require the following information:
   - Power calculation script  (`PlottingPowerSim.R`)
   - *.cov.bed (for all files)
   - R script for plotting features, either for scRNA/scATAC.
